@@ -1,0 +1,4 @@
+rootProject.name = 'TightLoose'
+include 'LooseCoupling'
+include 'IoCSpringDI'
+

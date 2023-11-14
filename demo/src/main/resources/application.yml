@@ -1,0 +1,18 @@
+server:
+  port: 9090
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/Java12SpringDemo
+    username: postgres
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+# Parametre iki nokta üst üste ardından bir boşşluk bırak ve değer gir.
+# bir boşluk bırakmazsanız hata alırsınız.
+# alt kırılımlar bir tab içeride olmalıdır.
+# Girintiler önemlidir.
+# bu dosya sizin projenizin temel ayar dosyasıdır.
