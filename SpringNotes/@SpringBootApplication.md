@@ -1,3 +1,4 @@
+#SpringBootApplication
 Uygulamanızın ana sınıfı yani main metodun olduğu class üzerinde gelir. Bu anotasyon ile uygulamanızın Spring Boot uygulaması olduğunu belirtmiş olursunuz.
 Bu anotasyon 3 farklı anotasyonun birleşimini temsil eder.
 
