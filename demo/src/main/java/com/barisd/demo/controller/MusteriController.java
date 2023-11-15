@@ -29,11 +29,23 @@ public class MusteriController {
 
     @GetMapping("/findall")
     public ResponseEntity<List<Musteri>> findAll(){
-        HttpHeaders headers=new HttpHeaders();
-        headers.add("baslik","deger");
-        //return ResponseEntity.ok(service.findAll());
-        return new ResponseEntity<>(service.findAll(),headers, HttpStatus.OK);
+        try {
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("baslik", "deger");
+            //return ResponseEntity.ok(service.findAll());
+            return new ResponseEntity<>(service.findAll(),headers, HttpStatus.OK);
+            //throw new RuntimeException("deneme exception");
+        }
+        catch (RuntimeException ex){
+            return ResponseEntity.badRequest().build();
+        }
     }
+
+    @GetMapping("/findbyad")
+    public ResponseEntity<List<Musteri>> findByAd(String ad){
+        return ResponseEntity.ok(service.findByAd(ad));
+    }
+
 
     @RequestMapping(value = "/deneme",method = RequestMethod.GET,produces = "application/json")
     public String deneme(){

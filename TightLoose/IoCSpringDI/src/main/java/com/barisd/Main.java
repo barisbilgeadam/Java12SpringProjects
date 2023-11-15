@@ -3,6 +3,8 @@ package com.barisd;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -19,5 +21,12 @@ public class Main {
 
         // Bean çağrımında Class kullanma
         System.out.println("Class cagrimi:...."+context.getBean(AdresliKisi.class));
+
+        // Spring Framework tarafından yönetilen tüm beanleri göster:
+        // Spring Context,Spring Container, IoC Container,
+            //  Application Context: Kurumsal yapılar için daha uygun. Web uygulamarı için de uygun. AOP ile uyumludur.
+        // Amaçları: Spring beanleri ve onların yaşam döngüsünü yönetmek.
+        System.out.println("--------------------------------");
+        Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
     }
 }
