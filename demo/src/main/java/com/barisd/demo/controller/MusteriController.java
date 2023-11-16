@@ -1,5 +1,9 @@
 package com.barisd.demo.controller;
 
+
+import com.barisd.demo.constant.EndPoints;
+import com.barisd.demo.dto.repsonse.MusteriFindAllResponseDto;
+import com.barisd.demo.dto.request.MusteriSaveRequestDto;
 import com.barisd.demo.repository.entity.Musteri;
 import com.barisd.demo.service.MusteriService;
 import lombok.RequiredArgsConstructor;
@@ -9,10 +13,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import static com.barisd.demo.constant.EndPoints.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/musteri")
+@RequestMapping(ROOT+MUSTERI)
 @RequiredArgsConstructor
 public class MusteriController {
     private final MusteriService service;
@@ -21,13 +26,14 @@ public class MusteriController {
 //        return ResponseEntity.ok(service.save(Musteri.builder().ad(ad).adres(adres).build()));
 //    }
 
-    @PostMapping("/save")
-    public ResponseEntity<Musteri> save(String ad, String adres){
-         return ResponseEntity.ok(service.save(Musteri.builder().ad(ad).adres(adres).build()));
+    @PostMapping(SAVE)
+    public ResponseEntity<String> save(MusteriSaveRequestDto dto){
+        service.saveDto(dto);
+        return ResponseEntity.ok("Kayıt Başarılı");
         // return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Musteri());
     }
 
-    @GetMapping("/findall")
+    @GetMapping(FINDALL)
     public ResponseEntity<List<Musteri>> findAll(){
         try {
             HttpHeaders headers = new HttpHeaders();
@@ -41,7 +47,13 @@ public class MusteriController {
         }
     }
 
-    @GetMapping("/findbyad")
+    @GetMapping(GETALL)
+    public ResponseEntity<List<MusteriFindAllResponseDto>> getAll(){
+        return ResponseEntity.ok(service.findAllResponseDtos());
+    }
+
+
+    @GetMapping(FINDBYAD)
     public ResponseEntity<List<Musteri>> findByAd(String ad){
         return ResponseEntity.ok(service.findByAd(ad));
     }

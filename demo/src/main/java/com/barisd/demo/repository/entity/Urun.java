@@ -1,7 +1,6 @@
 package com.barisd.demo.repository.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,20 +10,17 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 @Entity
-@Builder
-@Table(name = "tblmusteri")
-public class Musteri {
+@Table(name = "tblurun")
+public class Urun {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String ad;
-    String adres;
-    String telefon;
-    String il;
-    String ilce;
-    Long kayittarihi;
-    String username;
-    String password;
-    String email;
+    String marka;
+    String model;
+    Double fiyat;
+    Double kdv;
     String img;
+    String aciklama;
+    String birim;
 }
