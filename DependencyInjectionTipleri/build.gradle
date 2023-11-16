@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.barisd'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework:spring-core:5.3.30'
+    implementation 'org.springframework:spring-context:5.3.30'
+    implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
+}
