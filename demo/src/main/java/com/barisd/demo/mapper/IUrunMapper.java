@@ -1,5 +1,6 @@
 package com.barisd.demo.mapper;
 
+import com.barisd.demo.dto.repsonse.UrunFindAllResponseDto;
 import com.barisd.demo.dto.request.MusteriSaveRequestDto;
 import com.barisd.demo.dto.request.UrunSaveRequestDto;
 import com.barisd.demo.repository.entity.Musteri;
@@ -12,6 +13,7 @@ import org.mapstruct.factory.Mappers;
 public interface IUrunMapper {
     IUrunMapper INSTANCE = Mappers.getMapper( IUrunMapper.class );
     Urun urunSaveRequestDtoToUrun(UrunSaveRequestDto dto);
+    UrunFindAllResponseDto urunToDto(Urun urun);
 
 
 }

@@ -1,5 +1,6 @@
 package com.barisd.demo.service;
 
+import com.barisd.demo.dto.repsonse.UrunFindAllResponseDto;
 import com.barisd.demo.dto.request.UrunSaveRequestDto;
 import com.barisd.demo.mapper.IMusteriMapper;
 import com.barisd.demo.mapper.IUrunMapper;
@@ -9,6 +10,7 @@ import com.barisd.demo.repository.entity.Urun;
 import com.barisd.demo.utility.ServiceManager;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,5 +32,14 @@ public class UrunService extends ServiceManager<Urun,Long> {
     public Urun save(UrunSaveRequestDto dto){
         return save(IUrunMapper.INSTANCE.urunSaveRequestDtoToUrun(dto));
     }
+
+    public List<UrunFindAllResponseDto> findAllResponseDto(){
+        List<UrunFindAllResponseDto> liste=new ArrayList<>();
+        findAll().forEach(urun->{
+            liste.add(IUrunMapper.INSTANCE.urunToDto(urun));
+        });
+        return liste;
+    }
+
 
 }

@@ -4,6 +4,8 @@ package com.barisd.demo.controller;
 import com.barisd.demo.constant.EndPoints;
 import com.barisd.demo.dto.repsonse.MusteriFindAllResponseDto;
 import com.barisd.demo.dto.request.MusteriSaveRequestDto;
+import com.barisd.demo.exception.DemoException;
+import com.barisd.demo.exception.ErrorType;
 import com.barisd.demo.repository.entity.Musteri;
 import com.barisd.demo.service.MusteriService;
 import lombok.RequiredArgsConstructor;
@@ -54,7 +56,11 @@ public class MusteriController {
 
 
     @GetMapping(FINDBYAD)
-    public ResponseEntity<List<Musteri>> findByAd(String ad){
+    public ResponseEntity<List<Musteri>> findByAd(String ad) throws Exception {
+        if(ad==null){
+            throw new DemoException(ErrorType.PARAMETRE_EKSIK);
+        }
+
         return ResponseEntity.ok(service.findByAd(ad));
     }
 
